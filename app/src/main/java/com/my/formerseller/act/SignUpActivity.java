@@ -14,6 +14,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     ActivitySignUpBinding binding;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
