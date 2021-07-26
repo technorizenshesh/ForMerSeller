@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.LoginActivity">
+
+        <RelativeLayout
+            android:id="@+id/RRToolbar"
+            android:background="@color/purple_200"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            >
+
+            <RelativeLayout
+                android:id="@+id/RR_back"
+                android:layout_alignParentLeft="true"
+                android:visibility="visible"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="match_parent"
+                >
+
+                <ImageView
+                    android:src="@drawable/back"
+                    android:layout_centerInParent="true"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp">
+
+                </ImageView>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_centerInParent="true"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16sdp"
+                android:text="Add Product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+        </RelativeLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_below="@+id/RRToolbar"
+            android:layout_above="@+id/ll_singUp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Product"
+                    android:textColor="@color/natural_gray"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_18sdp" />
+
+                <EditText
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/border_orange"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    >
+
+                </EditText>
+
+                <TextView
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Product Price"
+                    android:textColor="@color/natural_gray"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_18sdp" />
+
+                <EditText
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/border_orange"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    >
+
+                </EditText>
+
+
+
+                <TextView
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Image"
+                    android:textColor="@color/natural_gray"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_18sdp" />
+
+                <RelativeLayout
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/border_orange"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp">
+
+                    <ImageView
+                        android:src="@drawable/add"
+                        android:layout_centerInParent="true"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        >
+                    </ImageView>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Decription"
+                    android:textColor="@color/natural_gray"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_18sdp" />
+
+                <EditText
+                    android:background="@drawable/border_orange"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp"
+                    >
+
+                </EditText>
+
+
+                <TextView
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    android:id="@+id/SignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_Logo"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:background="@drawable/btn_bg"
+                    android:elevation="@dimen/_5sdp"
+                    android:gravity="center"
+                    android:padding="@dimen/_12sdp"
+                    android:text="Add Product"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlCompat" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+
+</layout>

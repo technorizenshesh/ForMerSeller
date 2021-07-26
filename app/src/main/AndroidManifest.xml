@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.my.formerseller">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ForMerSeller"
+        >
+
+        <activity android:name=".act.InvoiceActivity"></activity>
+        <activity android:name=".act.OrderHistory" />
+        <activity android:name=".act.MyProduct" />
+        <activity android:name=".act.AddProduct" />
+        <activity android:name=".act.UserDetails" />
+        <activity android:name=".act.OrderDetailsUser" />
+        <activity android:name=".SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".act.Login" />
+        <activity android:name=".act.SignUpActivity" />
+        <activity android:name=".act.VerificationActivity" />
+        <activity android:name=".act.ForogotPassword" />
+        <activity android:name=".act.EditProfile" />
+        <activity android:name=".act.Notification" />
+        <activity android:name=".MainActivity" />
+
+    </application>
+
+</manifest>
