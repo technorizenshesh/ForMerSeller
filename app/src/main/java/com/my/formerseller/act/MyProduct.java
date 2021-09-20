@@ -26,6 +26,12 @@ public class MyProduct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding= DataBindingUtil.setContentView(this,R.layout.activity_my_product);
 
+        binding.RRBack.setOnClickListener(v -> {
+
+            onBackPressed();
+
+        });
+
         setAdapter();
     }
 

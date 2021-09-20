@@ -8,10 +8,22 @@
         android:layout_height="match_parent"
         tools:context=".activity.LoginActivity">
 
+        <ProgressBar
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:id="@+id/progressBar"
+            android:background="@drawable/progresh_background"
+            android:elevation="6dp"
+            android:padding="5dp"
+            android:indeterminate="true"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="@color/purple_200"
+            android:visibility="gone"/>
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -53,6 +65,7 @@
                     android:textSize="@dimen/_18sdp" />
 
                 <RelativeLayout
+                    android:id="@+id/RRUsername"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -67,12 +80,11 @@
                         android:layout_height = "@dimen/_80sdp">
 
                         <ImageView
-                            android:id="@+id/rounded_user_image"
+                            android:id="@+id/img_userProfile"
                             android:layout_width="@dimen/_80sdp"
                             android:layout_height="@dimen/_80sdp"
                             android:scaleType="centerInside"
                             android:src="@drawable/avtar"/>
-
 
                     </androidx.cardview.widget.CardView>
 
@@ -85,9 +97,6 @@
                         android:scaleType="centerInside"
                         android:src="@drawable/camera"/>
 
-
-
-
                 </RelativeLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -98,6 +107,7 @@
                     android:textColorHint="@color/natural_gray">
 
                     <EditText
+                        android:id="@+id/edtUserNae"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawablePadding="@dimen/_8sdp"
@@ -133,6 +143,7 @@
                     android:textColorHint="@color/natural_gray">
 
                     <EditText
+                        android:id="@+id/edtMobile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawablePadding="@dimen/_8sdp"
@@ -180,11 +191,12 @@
                     android:textColorHint="@color/natural_gray">
 
                     <EditText
+                        android:id="@+id/edtShopName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawablePadding="@dimen/_8sdp"
-                        android:hint="Frm Name"
-                        android:inputType="textPassword"
+                        android:hint="Shop Name"
+                        android:inputType="text"
                         android:textColor="@color/orange" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -197,11 +209,30 @@
                     android:textColorHint="@color/natural_gray">
 
                     <EditText
+                        android:id="@+id/edtabout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawablePadding="@dimen/_8sdp"
-                        android:hint="Frm Address"
-                        android:inputType="textPassword"
+                        android:hint="About"
+                        android:inputType="text"
+                        android:textColor="@color/orange" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:textColorHint="@color/natural_gray">
+
+                    <EditText
+                        android:id="@+id/edtShopAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/_8sdp"
+                        android:hint="Shop Address"
+                        android:inputType="text"
                         android:textColor="@color/orange" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -210,18 +241,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:text="Frm Image"
+                    android:text="Shop Image"
                     android:textColor="@color/orange"
                     android:textSize="@dimen/_16sdp" />
 
 
                 <RelativeLayout
+                    android:id="@+id/RRAddProducutImage"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:background="@drawable/border_orange"
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="@dimen/_80sdp">
 
                     <ImageView
+                        android:id="@+id/imgAddProduct1"
+                        android:src="@drawable/add"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/imgAddProduct"
                         android:src="@drawable/add"
                         android:layout_centerInParent="true"
                         android:layout_width="@dimen/_30sdp"
@@ -298,8 +339,6 @@
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
-
-
 
     </RelativeLayout>
 

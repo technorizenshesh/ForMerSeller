@@ -7,6 +7,19 @@
         android:layout_height="match_parent"
         >
 
+        <ProgressBar
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:id="@+id/progressBar"
+            android:background="@drawable/progresh_background"
+            android:elevation="6dp"
+            android:padding="5dp"
+            android:indeterminate="true"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="@color/purple_200"
+            android:visibility="gone"/>
+
         <RelativeLayout
             android:id="@+id/RRToolbar"
             android:background="@color/purple_200"
@@ -61,6 +74,7 @@
 
 
                 <RelativeLayout
+                    android:id="@+id/RRUserimag"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -74,7 +88,7 @@
                         android:layout_height = "@dimen/_120sdp">
 
                         <ImageView
-                            android:id="@+id/rounded_user_image"
+                            android:id="@+id/imgUserProfile"
                             android:layout_width="@dimen/_120sdp"
                             android:layout_height="@dimen/_120sdp"
                             android:scaleType="centerInside"
@@ -105,11 +119,11 @@
                     android:textColorHint="@color/natural_gray">
 
                     <EditText
+                        android:id="@+id/edtName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawablePadding="@dimen/_8sdp"
                         android:hint="Name"
-                        android:text="Reo"
                         android:inputType="textEmailAddress"
                         android:textColor="@color/orange" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -123,12 +137,12 @@
                     android:textColorHint="@color/natural_gray">
 
                     <EditText
+                        android:id="@+id/edtMobile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawablePadding="@dimen/_8sdp"
-                        android:hint="Last Name"
-                        android:text="Donaldo"
-                        android:inputType="textEmailAddress"
+                        android:hint="Mobile"
+                        android:inputType="number"
                         android:textColor="@color/orange" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -146,14 +160,13 @@
                         android:layout_height="wrap_content"
                         android:drawablePadding="@dimen/_8sdp"
                         android:hint="Email"
-                        android:text="example99@gmail.com"
                         android:inputType="textEmailAddress"
                         android:textColor="@color/orange" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:layout_marginBottom="@dimen/_20sdp"
-                    android:id="@+id/SignUp"
+                    android:id="@+id/Update"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/iv_Logo"

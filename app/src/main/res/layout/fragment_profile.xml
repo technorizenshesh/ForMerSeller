@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
+
+        <ProgressBar
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:id="@+id/progressBar"
+            android:background="@drawable/progresh_background"
+            android:elevation="6dp"
+            android:padding="5dp"
+            android:indeterminate="true"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="@color/purple_200"
+            android:visibility="gone"/>
 
         <RelativeLayout
        android:id="@+id/RRToolbar"
@@ -76,7 +90,7 @@
                         android:layout_height = "@dimen/_60sdp">
 
                         <ImageView
-                            android:id="@+id/rounded_user_image"
+                            android:id="@+id/imgUserProfile"
                             android:layout_width="@dimen/_60sdp"
                             android:layout_height="@dimen/_60sdp"
                             android:scaleType="centerInside"
@@ -95,19 +109,21 @@
 
 
                         <TextView
+                            android:id="@+id/txtName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Maximus Gold"
+                            android:text=""
                             android:textColor="@color/black"
                             android:textSize="@dimen/_14sdp"
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/txtEmail"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_centerVertical="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="maxi"
+                            android:text=""
                             android:textSize="@dimen/_14sdp"
                             android:textStyle="bold" />
 
@@ -385,6 +401,7 @@
 
 
                 <RelativeLayout
+                    android:id="@+id/RRLogout"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_30sdp">

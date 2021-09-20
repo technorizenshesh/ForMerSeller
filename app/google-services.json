@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "834071605493",
+    "project_id": "formersellerapp",
+    "storage_bucket": "formersellerapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834071605493:android:48d84cc6111f95603fd5bc",
+        "android_client_info": {
+          "package_name": "com.my.formerseller"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "834071605493-ol9570vmjeaf9blg76akjhgc3ite2can.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.my.formerseller",
+            "certificate_hash": "07601957272bd2cdcf2c4b144175d46a1c7cc098"
+          }
+        },
+        {
+          "client_id": "834071605493-ed19bu5rsgl1g0m2e5k4tc1rnrnj1ocr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWzlvl6fIhpeV4A2VghmsBlGY0bSwMe3E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "834071605493-ed19bu5rsgl1g0m2e5k4tc1rnrnj1ocr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

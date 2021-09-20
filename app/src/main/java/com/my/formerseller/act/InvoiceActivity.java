@@ -25,6 +25,12 @@ public class InvoiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding= DataBindingUtil.setContentView(this,R.layout.activity_invoice);
 
+        binding.RRBack.setOnClickListener(v -> {
+
+            onBackPressed();
+
+        });
+
         setAdapter();
     }
 

@@ -7,6 +7,21 @@
         android:layout_height="match_parent"
         tools:context=".activity.LoginActivity">
 
+
+        <ProgressBar
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:id="@+id/progressBar"
+            android:background="@drawable/progresh_background"
+            android:elevation="6dp"
+            android:padding="5dp"
+            android:indeterminate="true"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="@color/purple_200"
+            android:visibility="gone"/>
+
+
         <androidx.core.widget.NestedScrollView
             android:layout_above="@+id/ll_singUp"
             android:layout_width="match_parent"
@@ -63,7 +78,7 @@
                         android:layout_height="wrap_content"
                         android:drawablePadding="@dimen/_8sdp"
                         android:hint="Email/Mobile Number"
-                        android:text="example99@gmail.com"
+                        android:text="techtest221@gmail.com"
                         android:inputType="textEmailAddress"
                         android:textColor="@color/orange" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -82,7 +97,7 @@
                         android:layout_height="wrap_content"
                         android:drawablePadding="@dimen/_8sdp"
                         android:hint="Password"
-                        android:text="4454644565465"
+                        android:text="123456"
                         android:inputType="textPassword"
                         android:textColor="@color/orange" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -145,6 +160,7 @@
                         android:src="@mipmap/fb" />
 
                     <ImageView
+                        android:id="@+id/imgGoogle"
                         android:layout_centerInParent="true"
                         android:layout_width="@dimen/_60sdp"
                         android:layout_height="@dimen/_60sdp"

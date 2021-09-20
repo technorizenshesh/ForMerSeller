@@ -2,5 +2,5 @@
     <string name="app_name">ForMerSeller</string>
     <string name="accept"><u>Accept</u></string>
     <string name="decline"><u>Decline</u></string>
-
+    <string name="checkInternet">Please Check Your Internet Connection</string>
 </resources>
