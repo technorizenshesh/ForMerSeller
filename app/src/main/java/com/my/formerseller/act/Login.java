@@ -1,9 +1,12 @@
 package com.my.formerseller.act;
 
 import android.content.Intent;
+import android.content.pm.Signature;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Base64;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -22,6 +25,7 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.my.formerseller.MainActivity;
 import com.my.formerseller.Preference;
 import com.my.formerseller.R;
@@ -34,6 +38,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -53,6 +59,9 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
     FirebaseAuth mAuth;
     private final static int RC_SIGN_IN = 1;
     private GoogleApiClient googleApiClient;
+    private static final String TAG = "fireBaseToken";
+
+    String token="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,11 +70,17 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
 
         sessionManager = new SessionManager(Login.this);
 
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(runnable -> {
+            token = runnable.getToken();
+            Log.e( "Tokennnn" ,token);
+        });
+
         //Google SignIn
         mAuth = FirebaseAuth.getInstance();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
+
         googleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
@@ -190,7 +205,7 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
         Call<LoginModel> call = RetrofitClients
                 .getInstance()
                 .getApi()
-                .login(emai,password);
+                .login(emai,password,token);
 
         call.enqueue(new Callback<LoginModel>() {
             @Override

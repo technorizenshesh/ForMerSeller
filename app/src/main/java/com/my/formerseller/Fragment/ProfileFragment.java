@@ -49,9 +49,11 @@ public class ProfileFragment extends Fragment {
 
         });
         binding.RRLogout.setOnClickListener(v -> {
-
-            startActivity(new Intent(getActivity(), Login.class));
+            sessionManager.logoutUser();
             Preference.clearPreference(getActivity());
+            startActivity(new Intent(getActivity(), Login.class));
+            getActivity().finish();
+
         });
 
         binding.RROrderHistory.setOnClickListener(v -> {

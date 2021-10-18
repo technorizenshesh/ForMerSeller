@@ -4,6 +4,7 @@ import com.my.formerseller.model.AddProductModel;
 import com.my.formerseller.model.Categorymodel;
 import com.my.formerseller.model.ForogtPassword;
 import com.my.formerseller.model.LoginModel;
+import com.my.formerseller.model.MyProductModel;
 import com.my.formerseller.model.SubcaegoryModel;
 import com.my.formerseller.model.SubcaegoryModelData;
 
@@ -27,13 +28,15 @@ public interface Api {
     String  category_list="category_list";
     String  get_subcategory="get_subcategory";
     String update_buyer_profile ="update_buyer_profile";
+    String get_product ="get_product";
 
 
     @FormUrlEncoded
     @POST(login)
     Call<LoginModel>login(
             @Field("email") String email,
-            @Field("password") String password
+            @Field("password") String password,
+            @Field("register_id") String register_id
     );
 
  @FormUrlEncoded
@@ -99,6 +102,13 @@ public interface Api {
     @POST(get_subcategory)
     Call<SubcaegoryModel>get_subcategory(
             @Field("cat_id") String cat_id
+    );
+
+    @FormUrlEncoded
+    @POST(get_product)
+    Call<MyProductModel>get_product(
+            @Field("seller_id") String seller_id,
+            @Field("stock_status") String stock_status
     );
 
 }

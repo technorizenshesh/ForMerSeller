@@ -11,33 +11,15 @@ public class Preference {
 public static final String APP_PREF = "KapsiePreferences";
 
 public static SharedPreferences sp;
-public static String KEY_USER_ID = "TutorIdid";
-public static String KEY_check_status = "check_status";
-public static String KEY_username = "username";
-public static String KEY_Profile_image = "profile_image";
-public static String KEY_Address_id = "address_id";
-public static String KEY_location_id = "location_id";
-public static String KEY_location_addreess = "addreess";
-public static String KEY_tutor_category_id = "tutor_category_id";
-public static String KEY_tutor_category_sub_id = "tutor_category_sub_id ";
-public static String KEY_tutor_category_subJECT_id = "KEY_tutor_category_subJECT_id ";
-public static String KEY_tutor_category_subJECT_Name = "KEY_tutor_category_subJECT_name ";
-public static String KEY_USER_email = "email";
-public static String KEY_CategoryId = "id";
-public static String KEY_ReceiverId = "receiver_id";
-public static String KEY_SenderId = "sender_id";
-public static String KEY_student_Name = "student_name";
-public static String KEY_amount = "amount";
-public static String KEY_Address = "pic";
-public static String KEYType_login = "social";
-public static String KEY_DEsCriptionFinal = "DEsCriptionFinal";
-public static String key_PlaceUser_address = "address_place";
-public static String key_switch_shift_change = "shift_change";
-public static String KEY_Ordertype= "Ordertype";
-public static String KEY_OrderDay= "OrderDay";
-public static String KEY_OrderTime= "OrderTime";
-public static String KEY_ZipCode = "add";
-public static String KEY_OrderiD= "name";
+
+public static String KEY_user_id = "user_id";
+public static String KEYcategory_id = "caategory_id";
+public static String KEY_sub_Id = "KEY_sub_Id";
+public static String KEYLivestock = "Livestock";
+public static String KEYsuubcattitle = "sub";
+public static String KEY_seller_id = "seller_id";
+public static String KEYType_login = "KEYType_login";
+
 
 private Activity activity;
 private Context context;

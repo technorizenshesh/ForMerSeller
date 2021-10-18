@@ -61,6 +61,7 @@ public class EditProfile extends AppCompatActivity {
     String Email="";
     String Mobile="";
     String Password="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -267,13 +268,12 @@ public class EditProfile extends AppCompatActivity {
         String UsserId= Preference.get(EditProfile.this,Preference.KEYType_login);
 
         MultipartBody.Part imgFile = null;
-        MultipartBody.Part imgFileOne = null;
 
-        if (SignUpActivity.UserProfile_img == null) {
+        if (UserProfile_img == null) {
 
         } else {
-            RequestBody requestFileOne = RequestBody.create(MediaType.parse("image/*"), SignUpActivity.UserProfile_img);
-            imgFile = MultipartBody.Part.createFormData("image", SignUpActivity.UserProfile_img.getName(), requestFileOne);
+            RequestBody requestFileOne = RequestBody.create(MediaType.parse("image/*"),UserProfile_img);
+            imgFile = MultipartBody.Part.createFormData("image",UserProfile_img.getName(), requestFileOne);
         }
 
         RequestBody Name = RequestBody.create(MediaType.parse("text/plain"), UserNae);

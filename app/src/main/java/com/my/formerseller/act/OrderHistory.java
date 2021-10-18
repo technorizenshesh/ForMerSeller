@@ -25,10 +25,10 @@ public class OrderHistory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
        binding= DataBindingUtil.setContentView(this,R.layout.activity_order_history);
 
-        setAdapter();
+      //  setAdapter();
     }
 
-    private void setAdapter() {
+ /*   private void setAdapter() {
 
         this.modelList.add(new HomeModel("Corn"));
         this.modelList.add(new HomeModel("Tomotoes"));
@@ -48,5 +48,5 @@ public class OrderHistory extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
 }

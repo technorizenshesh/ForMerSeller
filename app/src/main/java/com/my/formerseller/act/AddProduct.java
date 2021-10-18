@@ -286,12 +286,11 @@ public class AddProduct extends AppCompatActivity {
 
         MultipartBody.Part imgFile = null;
 
-        if (SignUpActivity.UserProfile_img == null) {
+        if (UserProfile_img == null) {
 
         } else {
-            RequestBody requestFileOne = RequestBody.create(MediaType.parse("image/*"), SignUpActivity.UserProfile_img);
-            imgFile = MultipartBody.Part.createFormData("image", SignUpActivity.UserProfile_img.getName(), requestFileOne);
-
+            RequestBody requestFileOne = RequestBody.create(MediaType.parse("image/*"),UserProfile_img);
+            imgFile = MultipartBody.Part.createFormData("image",UserProfile_img.getName(), requestFileOne);
         }
 
         RequestBody Seller_Id = RequestBody.create(MediaType.parse("text/plain"), SellerId);
