@@ -1,5 +1,6 @@
 package com.my.formerseller.act;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -43,6 +44,7 @@ public class MyProduct extends AppCompatActivity {
 
         binding.RRUpdateProduct.setOnClickListener(v ->
         {
+            startActivity(new Intent(MyProduct.this,UpdateProductActivity.class));
 
         });
 

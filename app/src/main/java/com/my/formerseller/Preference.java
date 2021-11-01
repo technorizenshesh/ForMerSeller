@@ -20,6 +20,8 @@ public static String KEYsuubcattitle = "sub";
 public static String KEY_seller_id = "seller_id";
 public static String KEYType_login = "KEYType_login";
 
+public static String key_switch_shift_change = "witch_shift_change";
+
 
 private Activity activity;
 private Context context;

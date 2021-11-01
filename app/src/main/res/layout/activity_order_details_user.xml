@@ -171,7 +171,16 @@
                             android:textSize="@dimen/_12sdp"
                             />
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_12sdp"
+                            android:text="Orders"
+                            android:textColor="@color/purple_200" />
+
+
                         <LinearLayout
+                            android:visibility="gone"
                             android:orientation="horizontal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -248,6 +257,7 @@
                             </LinearLayout>
 
                             <RelativeLayout
+                                android:visibility="gone"
                                 android:padding="@dimen/_5sdp"
                                 android:layout_marginLeft="@dimen/_10sdp"
                                 android:layout_width="@dimen/_80sdp"
@@ -325,7 +335,15 @@
                             android:textSize="@dimen/_12sdp"
                             />
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_12sdp"
+                            android:text="Orders"
+                            android:textColor="@color/purple_200" />
+
                         <LinearLayout
+                            android:visibility="gone"
                             android:orientation="horizontal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -402,6 +420,7 @@
                             </LinearLayout>
 
                             <RelativeLayout
+                                android:visibility="gone"
                                 android:padding="@dimen/_5sdp"
                                 android:layout_marginLeft="@dimen/_10sdp"
                                 android:layout_width="@dimen/_80sdp"

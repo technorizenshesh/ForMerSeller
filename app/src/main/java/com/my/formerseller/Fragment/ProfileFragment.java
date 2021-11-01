@@ -3,6 +3,7 @@ package com.my.formerseller.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,6 +99,9 @@ public class ProfileFragment extends Fragment {
     private void getProfileMethod(){
 
        String UsserId= Preference.get(getActivity(),Preference.KEYType_login);
+
+        Log.e("User_id -----",""+UsserId);
+
 
         Call<LoginModel> call = RetrofitClients
                 .getInstance()

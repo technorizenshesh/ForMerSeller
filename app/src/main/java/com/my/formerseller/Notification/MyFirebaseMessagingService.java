@@ -16,7 +16,9 @@ import com.my.formerseller.MainActivity;
 import com.my.formerseller.Preference;
 import com.my.formerseller.R;
 
+
 import org.json.JSONObject;
+
 import java.util.Map;
 import java.util.Random;
 
@@ -32,6 +34,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
+
+        Log.e("remote_message>>>", String.valueOf(remoteMessage));
 
         // log the getting message from firebase
         // Log.d(TAG, "From: " + remoteMessage.getFrom());
@@ -58,6 +62,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         // if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
+
             sendNotification(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody(), remoteMessage.getData());
             // Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
@@ -211,14 +216,15 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 //            Bitmap bitmap = ((BitmapDrawable)drawable).getBitmap();
 
 
-      // boolean importantShift = Preference.getBool(this,Preference.key_switch_shift_change);
+       boolean importantShift = Preference.getBool(this,Preference.key_switch_shift_change);
 
    /*    if(importantShift)
        {*/
-           Intent intent = new Intent(this, MainActivity.class);
-           intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-           PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 , intent,
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 , intent,
                    PendingIntent.FLAG_ONE_SHOT);
 
            String channelId = "1";

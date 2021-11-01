@@ -40,9 +40,67 @@ public class HomeFragment extends Fragment {
 
             startActivity(new Intent(getActivity(), Notification.class));
 
+        });
+
+        binding.RRPending.setOnClickListener(v -> {
+
+            binding.txtPending.setTextColor(getResources().getColor(R.color.white));
+            binding.txtAccept.setTextColor(getResources().getColor(R.color.white));
+            binding.txttransit.setTextColor(getResources().getColor(R.color.white));
+            binding.txtCancel.setTextColor(getResources().getColor(R.color.white));
+
+
+            binding.RRPending.setBackgroundResource(R.color.purple_200);
+            binding.RRAccept.setBackgroundResource(R.color.black);
+            binding.RRIntrasit.setBackgroundResource(R.color.black);
+            binding.RRCancel.setBackgroundResource(R.color.black);
+        });
+
+        binding.RRAccept.setOnClickListener(v -> {
+
+            binding.txtPending.setTextColor(getResources().getColor(R.color.white));
+            binding.txtAccept.setTextColor(getResources().getColor(R.color.white));
+            binding.txttransit.setTextColor(getResources().getColor(R.color.white));
+            binding.txtCancel.setTextColor(getResources().getColor(R.color.white));
+
+
+
+            binding.RRPending.setBackgroundResource(R.color.black);
+            binding.RRAccept.setBackgroundResource(R.color.purple_200);
+            binding.RRIntrasit.setBackgroundResource(R.color.black);
+            binding.RRCancel.setBackgroundResource(R.color.black);
 
         });
 
+        binding.RRIntrasit.setOnClickListener(v -> {
+
+            binding.txtPending.setTextColor(getResources().getColor(R.color.white));
+            binding.txtAccept.setTextColor(getResources().getColor(R.color.white));
+            binding.txttransit.setTextColor(getResources().getColor(R.color.white));
+            binding.txtCancel.setTextColor(getResources().getColor(R.color.white));
+
+
+            binding.RRPending.setBackgroundResource(R.color.black);
+            binding.RRAccept.setBackgroundResource(R.color.black);
+            binding.RRIntrasit.setBackgroundResource(R.color.purple_200);
+            binding.RRCancel.setBackgroundResource(R.color.black);
+
+        });
+
+        binding.RRCancel.setOnClickListener(v -> {
+
+
+            binding.txtPending.setTextColor(getResources().getColor(R.color.white));
+            binding.txtAccept.setTextColor(getResources().getColor(R.color.white));
+            binding.txttransit.setTextColor(getResources().getColor(R.color.white));
+            binding.txtCancel.setTextColor(getResources().getColor(R.color.white));
+
+            binding.RRPending.setBackgroundResource(R.color.black);
+            binding.RRAccept.setBackgroundResource(R.color.black);
+            binding.RRIntrasit.setBackgroundResource(R.color.black);
+            binding.RRCancel.setBackgroundResource(R.color.purple_200);
+
+        });
 
         setAdapter();
 

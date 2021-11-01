@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -74,7 +76,8 @@
             android:indeterminate="true"
             android:indeterminateTintMode="src_atop"
             android:indeterminateTint="@color/purple_200"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            />
 
         <LinearLayout
             android:layout_below="@+id/RRToolbar"
@@ -90,7 +93,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="vertical"
-                android:visibility="visible" />
+                android:visibility="visible"
+                />
 
 
         </LinearLayout>

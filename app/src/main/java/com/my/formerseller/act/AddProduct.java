@@ -343,7 +343,6 @@ public class AddProduct extends AppCompatActivity {
 
 
     public void getCategory() {
-
         Call<Categorymodel> call = RetrofitClients
                 .getInstance()
                 .getApi()
