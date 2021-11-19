@@ -26,11 +26,15 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.gson.Gson;
+import com.my.formerseller.Chat.DataManager;
+import com.my.formerseller.Chat.SessionManagerTwo;
 import com.my.formerseller.MainActivity;
 import com.my.formerseller.Preference;
 import com.my.formerseller.R;
 import com.my.formerseller.databinding.ActivityLoginBinding;
 import com.my.formerseller.model.LoginModel;
+import com.my.formerseller.utils.Constant;
 import com.my.formerseller.utils.RetrofitClients;
 import com.my.formerseller.utils.SessionManager;
 
@@ -45,6 +49,8 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.content.ContentValues.TAG;
 
 public class Login extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
 
@@ -143,22 +149,13 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
             String SocialId=account.getId();
             Uri Url=account.getPhotoUrl();
 
-            Intent intent = new Intent(Login.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-/*
-
             if (sessionManager.isNetworkAvailable()) {
 
-                progressBar.setVisibility(View.VISIBLE);
-
-                SocialLoginMethod(UsernAME,"123456",email,"fghgh",SocialId);
+                SocialLogin(SocialId,UsernAME,email,"","","",Url);
 
             }else {
-
-                Toast.makeText(LoginActivity.this, R.string.checkInternet, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.this, R.string.checkInternet, Toast.LENGTH_SHORT).show();
             }
-*/
 
         } else {
 
@@ -185,11 +182,7 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
         }else
         {
             if (sessionManager.isNetworkAvailable()) {
-
-                binding.progressBar.setVisibility(View.VISIBLE);
-
                 loginMethod(email,password);
-
             }else {
                 Toast.makeText(this, R.string.checkInternet, Toast.LENGTH_SHORT).show();
             }
@@ -200,32 +193,32 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
         return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
     }
 
+
     private void loginMethod(String emai,String password){
 
+        DataManager.getInstance().showProgressMessage(Login.this,getString(R.string.please_wait));
         Call<LoginModel> call = RetrofitClients
                 .getInstance()
                 .getApi()
                 .login(emai,password,token);
-
         call.enqueue(new Callback<LoginModel>() {
             @Override
             public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
-
-                binding.progressBar.setVisibility(View.GONE);
-
+                DataManager.getInstance().hideProgressMessage();
                 LoginModel finallyPr = response.body();
-
-                String status = finallyPr.getStatus();
-
-                if (status.equalsIgnoreCase("1")) {
+                String responseString = new Gson().toJson(response.body());
+                Log.e(TAG,"Login Response :"+responseString);
+                if(finallyPr.getStatus().equals("1")){
 
                     Preference.save(Login.this,Preference.KEYType_login,finallyPr.getResult().getId());
-
-                    startActivity(new Intent(Login.this, MainActivity.class));
-
+                    SessionManagerTwo.writeString(Login.this, Constant.USER_INFO, responseString);
+                    Toast.makeText(Login.this, finallyPr.getMessage(), Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Login.this,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                    //
+                   finish();
 
                 } else {
-                    binding.progressBar.setVisibility(View.GONE);
+
                     Toast.makeText(Login.this, finallyPr.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -233,7 +226,45 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
 
             @Override
             public void onFailure(Call<LoginModel> call, Throwable t) {
-                binding.progressBar.setVisibility(View.GONE);
+                DataManager.getInstance().hideProgressMessage();
+                call.cancel();
+                Toast.makeText(Login.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void SocialLogin(String Social_id,String Name, String email, String mobile, String lat, String lon, Uri url){
+
+        DataManager.getInstance().showProgressMessage(Login.this,getString(R.string.please_wait));
+
+        Call<LoginModel> call = RetrofitClients
+                .getInstance()
+                .getApi()
+                .social_login(Social_id,Name,email,mobile,token,"","",lat,lon,"Seller");
+        call.enqueue(new Callback<LoginModel>() {
+            @Override
+            public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
+                DataManager.getInstance().hideProgressMessage();
+                LoginModel finallyPr = response.body();
+                String responseString = new Gson().toJson(response.body());
+                Log.e(TAG,"Login Response :"+responseString);
+                if(finallyPr.getStatus().equals("1")){
+
+                    Preference.save(Login.this,Preference.KEYType_login,finallyPr.getResult().getId());
+                    //
+                    SessionManagerTwo.writeString(Login.this, Constant.USER_INFO, responseString);
+                    Toast.makeText(Login.this, finallyPr.getMessage(), Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Login.this,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                    finish();
+
+                } else {
+                    Toast.makeText(Login.this, finallyPr.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<LoginModel> call, Throwable t) {
+                DataManager.getInstance().hideProgressMessage();
+                call.cancel();
                 Toast.makeText(Login.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

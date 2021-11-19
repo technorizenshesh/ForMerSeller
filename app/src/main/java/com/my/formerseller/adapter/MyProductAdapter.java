@@ -2,16 +2,21 @@ package com.my.formerseller.adapter;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.my.formerseller.Preference;
 import com.my.formerseller.R;
+import com.my.formerseller.act.MyProduct;
+import com.my.formerseller.act.UpdateProductActivity;
 import com.my.formerseller.model.HomeModel;
 import com.my.formerseller.model.MyProductDataModel;
 
@@ -54,6 +59,14 @@ public class MyProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             {
                 Glide.with(mContext).load(model.getImage()).circleCrop().into(genericViewHolder.img1);
             }
+
+            genericViewHolder.RRUpdateProduct.setOnClickListener(v -> {
+
+                Preference.save(mContext, Preference.KEY_product_details_id,model.getId());
+
+                mContext.startActivity(new Intent(mContext, UpdateProductActivity.class));
+
+            });
         }
 
     }
@@ -84,6 +97,7 @@ public class MyProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         private TextView txtProductName;
         private ImageView img1;
+        private RelativeLayout RRUpdateProduct;
 
 
         public ViewHolder(final View itemView) {
@@ -91,6 +105,7 @@ public class MyProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
          this.txtProductName=itemView.findViewById(R.id.txtProductName);
          this.img1=itemView.findViewById(R.id.img1);
+         this.RRUpdateProduct=itemView.findViewById(R.id.RRUpdateProduct);
 
 
             itemView.setOnClickListener(new View.OnClickListener() {

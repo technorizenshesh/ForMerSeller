@@ -110,7 +110,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:text="Product Name"
+                    android:text="Sub Category"
                     android:textColor="@color/natural_gray"
                     android:textSize="@dimen/_16sdp" />
 
@@ -189,19 +189,44 @@
                     android:textColor="@color/natural_gray"
                     android:textSize="@dimen/_16sdp" />
 
-                <RelativeLayout
+                <LinearLayout
                     android:id="@+id/RRAddImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+
+                    <ImageView
+                        android:id="@+id/imgeProduct"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/img_home_one"/>
+
+                    <TextView
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Upload New Image"
+                        android:textColor="@color/natural_gray"
+                        android:textSize="@dimen/_16sdp" />
+
+
+                </LinearLayout>
+
+
+                <RelativeLayout
+                    android:visibility="gone"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="@dimen/_100sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:background="@drawable/border_orange">
 
                     <ImageView
-                        android:id="@+id/imgeProduct"
                         android:layout_width="@dimen/_25sdp"
                         android:layout_height="@dimen/_25sdp"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/add"></ImageView>
+                        android:src="@drawable/add"/>
+
 
                 </RelativeLayout>
 
@@ -223,7 +248,7 @@
 
 
                 <TextView
-                    android:id="@+id/AddProduct"
+                    android:id="@+id/updatesProduct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/iv_Logo"
@@ -236,7 +261,7 @@
                     android:elevation="@dimen/_5sdp"
                     android:gravity="center"
                     android:padding="@dimen/_12sdp"
-                    android:text="Add Product"
+                    android:text="@string/update_product"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_14sdp"

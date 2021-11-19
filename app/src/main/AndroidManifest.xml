@@ -18,45 +18,76 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.ForMerSeller">
+        android:theme="@style/Theme.ForMerSeller"
+        >
 
-        <activity android:name=".SplashActivity">
+        <activity android:name=".Chat.MsgChatAct"
+            android:screenOrientation="portrait"
+           >
+
+      <!--  <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>-->
+
+    </activity>
+
+        <activity android:name=".SplashActivity"
+            android:screenOrientation="portrait"
+            >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
 
         <activity android:name=".act.UpdateProductActivity"
+            android:screenOrientation="portrait"
             />
 
-        <activity android:name=".act.InvoiceActivity" />
+        <activity android:name=".act.InvoiceActivity"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".act.OrderHistory" />
+        <activity android:name=".act.OrderHistory"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".act.MyProduct" />
+        <activity android:name=".act.MyProduct"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".act.AddProduct" />
+        <activity android:name=".act.AddProduct"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".act.UserDetails" />
+        <activity android:name=".act.UserDetails"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".act.OrderDetailsUser" />
+        <activity android:name=".act.OrderDetailsUser"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".act.Login" />
+        <activity android:name=".act.Login"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".act.SignUpActivity" />
+        <activity android:name=".act.SignUpActivity"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".act.VerificationActivity" />
+        <activity android:name=".act.VerificationActivity"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".act.ForogotPassword" />
+        <activity android:name=".act.ForogotPassword"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".act.EditProfile" />
+        <activity android:name=".act.EditProfile"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".act.Notification" />
+        <activity android:name=".act.Notification"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"

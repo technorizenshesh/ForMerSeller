@@ -139,6 +139,30 @@ public class SignUpActivity extends AppCompatActivity {
 
         });
 
+        binding.imgAddProduct1.setOnClickListener(v -> {
+
+            Dexter.withActivity(SignUpActivity.this)
+                    .withPermissions(Manifest.permission.CAMERA,
+                            Manifest.permission.READ_EXTERNAL_STORAGE,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    .withListener(new MultiplePermissionsListener() {
+                        @Override
+                        public void onPermissionsChecked(MultiplePermissionsReport report) {
+                            if (report.areAllPermissionsGranted()) {
+                                Intent intent = CropImage.activity().setGuidelines(CropImageView.Guidelines.ON).getIntent(SignUpActivity.this);
+                                startActivityForResult(intent, 2);
+                            } else {
+                                showSettingDialogue();
+                            }
+                        }
+                        @Override
+                        public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                            token.continuePermissionRequest();
+                        }
+                    }).check();
+
+        });
+
     }
 
 
@@ -222,7 +246,10 @@ public class SignUpActivity extends AppCompatActivity {
                     UserProfile_img_one = FileUtil.from(SignUpActivity.this, resultUri);
                     // img_two.setImageBitmap(bitmap);
                     //    img_one_certificate.setImageResource(R.drawable.check_one);
-                    Glide.with(this).load(bitmap).circleCrop().into(binding.imgAddProduct);
+                    binding.RRAddProducutImage.setVisibility(View.GONE);
+                    binding.imgAddProduct1.setVisibility(View.VISIBLE);
+
+                    Glide.with(this).load(bitmap).into(binding.imgAddProduct1);
                  //   isCertificate=true;
 
                 } catch (IOException e) {

@@ -23,24 +23,29 @@
             android:layout_height="wrap_content"
             >
 
-            <ImageView
-                android:layout_alignParentLeft="true"
-                android:id="@+id/img1"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgSeller"
+                android:layout_margin="@dimen/_5sdp"
                 android:layout_width="@dimen/_60sdp"
                 android:layout_height="@dimen/_60sdp"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                android:src="@drawable/img_home_one" />
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_toRightOf="@+id/ivBack"
+                android:src="@drawable/user_default"
+                app:civ_border_color="@color/natural_gray"
+                app:civ_border_width="1dp" />
+
 
             <LinearLayout
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/img1"
+                android:layout_toRightOf="@+id/imgSeller"
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/txtUserName"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
@@ -51,26 +56,16 @@
                     />
 
                 <TextView
-                    android:layout_marginTop="@dimen/_3sdp"
+                    android:id="@+id/txtlastMsg"
+                    android:text="Hello"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Lorem ipsum is simply dummy text of the printing and typping industry."
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp"
                     />
-            </LinearLayout>
 
-            <TextView
-                android:layout_margin="@dimen/_5sdp"
-                android:layout_alignParentRight="true"
-                android:id="@+id/img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="02:00"
-                android:textStyle="bold"
-                android:textColor="@color/purple_200"
-                android:textSize="@dimen/_12sdp"
-                />
+            </LinearLayout>
 
 
         </RelativeLayout>

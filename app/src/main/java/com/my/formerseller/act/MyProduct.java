@@ -42,11 +42,6 @@ public class MyProduct extends AppCompatActivity {
 
         });
 
-        binding.RRUpdateProduct.setOnClickListener(v ->
-        {
-            startActivity(new Intent(MyProduct.this,UpdateProductActivity.class));
-
-        });
 
         sessionManager = new SessionManager(MyProduct.this);
 

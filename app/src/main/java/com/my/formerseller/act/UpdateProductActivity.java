@@ -26,14 +26,19 @@ import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.my.formerseller.FileUtil;
+import com.my.formerseller.MainActivity;
+import com.my.formerseller.Preference;
 import com.my.formerseller.R;
 import com.my.formerseller.adapter.CategorySpinnerAdapter;
 import com.my.formerseller.adapter.SubSpinnerAdapter;
 import com.my.formerseller.databinding.ActivityUpdateProductBinding;
+import com.my.formerseller.model.AddProductModel;
 import com.my.formerseller.model.CategoryModelData;
 import com.my.formerseller.model.Categorymodel;
+import com.my.formerseller.model.GetOrderNotification;
 import com.my.formerseller.model.SubcaegoryModel;
 import com.my.formerseller.model.SubcaegoryModelData;
+import com.my.formerseller.model.UpdateProductModel;
 import com.my.formerseller.utils.RetrofitClients;
 import com.my.formerseller.utils.SessionManager;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -45,6 +50,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import id.zelory.compressor.Compressor;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -66,9 +74,17 @@ public class UpdateProductActivity extends AppCompatActivity {
     private Uri resultUri;
     public static File UserProfile_img, codmpressedImage, compressActualFile;
 
-    String ProductName="";
-    String ProductPrice="";
-    String ProductDescription="";
+    String product_id="";
+    String seller_id="";
+    String category_id="";
+    String name="";
+    String description="";
+    String price="";
+    String stock_status="";
+    String lat="";
+    String lon="";
+    String image="";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +93,9 @@ public class UpdateProductActivity extends AppCompatActivity {
 
         sessionManager = new SessionManager(UpdateProductActivity.this);
 
+
         setUi();
+
 
         if (sessionManager.isNetworkAvailable()) {
 
@@ -133,9 +151,22 @@ public class UpdateProductActivity extends AppCompatActivity {
             onBackPressed();
         });
 
-        binding.AddProduct.setOnClickListener(v -> {
-           // validation();
-            // finish();
+        binding.updatesProduct.setOnClickListener(v -> {
+
+            name=binding.edtprodduct.getText().toString();
+            description=binding.edtproductDdescription.getText().toString();
+            price=binding.edtprodductprice.getText().toString();
+            price=binding.edtprodductprice.getText().toString();
+
+            if (sessionManager.isNetworkAvailable()) {
+
+                binding.progressBar.setVisibility(View.VISIBLE);
+
+                UpdatedProductApi();
+
+            }else {
+                Toast.makeText(UpdateProductActivity.this, R.string.checkInternet, Toast.LENGTH_SHORT).show();
+            }
 
         });
 
@@ -259,7 +290,7 @@ public class UpdateProductActivity extends AppCompatActivity {
                     if (status.equalsIgnoreCase("1")){
 
                         modelist= (ArrayList<CategoryModelData>) myclass.getResult();
-                        CategorySpinnerAdapter customAdapter=new CategorySpinnerAdapter(UpdateProductActivity.this,flags,modelist);
+                        CategorySpinnerAdapter customAdapter=new CategorySpinnerAdapter(UpdateProductActivity.this,modelist);
                         binding.spinnerCatgory.setAdapter(customAdapter);
 
                     }else {
@@ -303,6 +334,8 @@ public class UpdateProductActivity extends AppCompatActivity {
                         SubSpinnerAdapter customAdapter=new SubSpinnerAdapter(UpdateProductActivity.this,flags,modelist_sub);
                         binding.spinnerSbcategoy.setAdapter(customAdapter);
 
+                        get_product_detail();
+
                     }else {
                         Toast.makeText(UpdateProductActivity.this, result, Toast.LENGTH_SHORT).show();
 
@@ -318,6 +351,134 @@ public class UpdateProductActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void UpdatedProductApi(){
+
+        MultipartBody.Part imgFile = null;
+
+        if (UserProfile_img == null) {
+
+        } else {
+            if(!image.equalsIgnoreCase(""))
+            {
+                RequestBody requestFileOne = RequestBody.create(MediaType.parse("image/*"),UserProfile_img);
+                imgFile = MultipartBody.Part.createFormData("image",UserProfile_img.getName(), requestFileOne);
+            }
+         }
+
+        RequestBody Product_id = RequestBody.create(MediaType.parse("text/plain"), product_id);
+        RequestBody SellerId = RequestBody.create(MediaType.parse("text/plain"), seller_id);
+        RequestBody CategoryId = RequestBody.create(MediaType.parse("text/plain"), category_id);
+        RequestBody Name = RequestBody.create(MediaType.parse("text/plain"), name);
+        RequestBody Description = RequestBody.create(MediaType.parse("text/plain"), description);
+        RequestBody Price = RequestBody.create(MediaType.parse("text/plain"), price);
+
+        RequestBody Stock = RequestBody.create(MediaType.parse("text/plain"), "InStock");
+        RequestBody lat = RequestBody.create(MediaType.parse("text/plain"), "75.255");
+        RequestBody lon = RequestBody.create(MediaType.parse("text/plain"), "45.64");
+
+        Call<UpdateProductModel> call = RetrofitClients
+                .getInstance()
+                .getApi()
+                .update_product(Product_id,SellerId,CategoryId,Name,Description,Price,Stock,lat,lon,imgFile);
+
+        call.enqueue(new Callback<UpdateProductModel>() {
+            @Override
+            public void onResponse(Call<UpdateProductModel> call, Response<UpdateProductModel> response) {
+
+                binding.progressBar.setVisibility(View.GONE);
+
+                UpdateProductModel finallyPr = response.body();
+
+                String status = finallyPr.getStatus();
+
+                if (status.equalsIgnoreCase("1")) {
+
+                    binding.spinnerCatgory.setSelection(Integer.parseInt(finallyPr.getResult().getCategoryId()));
+                    binding.spinnerSbcategoy.setSelection(Integer.parseInt(finallyPr.getResult().getSubCatId()));
+                    binding.edtprodduct.setText(finallyPr.getResult().getName());
+                    binding.edtprodductprice.setText(finallyPr.getResult().getPrice());
+
+                    if(!finallyPr.getResult().getImage().equalsIgnoreCase(""))
+                    {
+                        Glide.with(UpdateProductActivity.this).load(finallyPr.getResult().getImage()).circleCrop().into(binding.imgeProduct);
+                    }
+
+                    Toast.makeText(UpdateProductActivity.this, ""+finallyPr.getMessage(), Toast.LENGTH_SHORT).show();
+
+                } else {
+                    binding.progressBar.setVisibility(View.GONE);
+                    Toast.makeText(UpdateProductActivity.this, finallyPr.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<UpdateProductModel> call, Throwable t) {
+
+                binding.progressBar.setVisibility(View.GONE);
+
+                Toast.makeText(UpdateProductActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
+
+    private void get_product_detail() {
+
+        String product_details_id = Preference.get(UpdateProductActivity.this, Preference.KEY_product_details_id);
+
+        Call<UpdateProductModel> call = RetrofitClients
+                .getInstance()
+                .getApi()
+                .get_product_detail(product_details_id);
+        call.enqueue(new Callback<UpdateProductModel>() {
+            @Override
+            public void onResponse(Call<UpdateProductModel> call, Response<UpdateProductModel> response) {
+
+                binding.progressBar.setVisibility(View.GONE);
+
+                UpdateProductModel finallyPr = response.body();
+
+                String status = finallyPr.getStatus();
+
+                if (status.equalsIgnoreCase("1")) {
+
+                    product_id=finallyPr.getResult().getId().toString();
+                     seller_id=finallyPr.getResult().getSellerId().toString();
+                     category_id=finallyPr.getResult().getCategoryId().toString();
+                     name=finallyPr.getResult().getName().toString();
+                     description=finallyPr.getResult().getDescription().toString();
+                     price=finallyPr.getResult().getPrice().toString();
+                     stock_status=finallyPr.getResult().getStockStatus().toString();
+                     lat=finallyPr.getResult().getLat().toString();
+                     lon=finallyPr.getResult().getLon().toString();
+                     image=finallyPr.getResult().getImage().toString();
+
+                    binding.spinnerCatgory.setSelection(Integer.parseInt(finallyPr.getResult().getCategoryId()));
+                    binding.spinnerSbcategoy.setSelection(Integer.parseInt(finallyPr.getResult().getSubCatId()));
+                    binding.edtprodduct.setText(finallyPr.getResult().getName());
+                    binding.edtprodductprice.setText(finallyPr.getResult().getPrice());
+                    binding.edtproductDdescription.setText(finallyPr.getResult().getDescription());
+
+                    if(!finallyPr.getResult().getImage().equalsIgnoreCase(""))
+                    {
+                        Glide.with(UpdateProductActivity.this).load(finallyPr.getResult().getImage()).circleCrop().into(binding.imgeProduct);
+                    }
+
+                } else {
+                    binding.progressBar.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UpdateProductModel> call, Throwable t) {
+                binding.progressBar.setVisibility(View.GONE);
+            }
+        });
+    }
+
 
 
 }

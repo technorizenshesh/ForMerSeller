@@ -7,7 +7,6 @@
         android:layout_height="match_parent"
         tools:context=".activity.LoginActivity">
 
-
         <ProgressBar
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -19,7 +18,8 @@
             android:indeterminate="true"
             android:indeterminateTintMode="src_atop"
             android:indeterminateTint="@color/purple_200"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            />
 
 
         <androidx.core.widget.NestedScrollView
@@ -64,6 +64,8 @@
                     android:textStyle="bold"
                     android:textSize="@dimen/_18sdp" />
 
+                <!--android:text="techtest221@gmail.com"-->
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/input_layout_Email"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -82,6 +84,8 @@
                         android:inputType="textEmailAddress"
                         android:textColor="@color/orange" />
                 </com.google.android.material.textfield.TextInputLayout>
+
+              <!--  android:text="123456"-->
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/input_layout_Pass"
@@ -135,6 +139,7 @@
 
 
                 <TextView
+                    android:visibility="gone"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_width="wrap_content"
@@ -145,6 +150,7 @@
                     android:textSize="@dimen/_14sdp" />
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:layout_marginBottom="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_gravity="center"

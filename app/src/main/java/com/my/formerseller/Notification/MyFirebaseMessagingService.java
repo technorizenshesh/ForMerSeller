@@ -12,6 +12,7 @@ import android.util.Log;
 import androidx.core.app.NotificationCompat;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.my.formerseller.Chat.MsgChatAct;
 import com.my.formerseller.MainActivity;
 import com.my.formerseller.Preference;
 import com.my.formerseller.R;
@@ -29,7 +30,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     String status ="";
     String Msg ="";
     String Title ="";
+    String userid ="";
+    String userimage ="";
     String key ="";
+    String type ="";
+    Intent intent;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -94,10 +99,15 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             try
             {
                 JSONObject object = new JSONObject(data.get("message"));
+                 key = object.optString("key");
                  status = object.optString("result");
                  Msg = object.optString("message");
-                 Title = object.optString("title");
-                 key = object.optString("key");
+                 Title = object.optString("username");
+                 userimage = object.optString("userimage");
+
+                userid = object.optString("userid");
+                type = object.optString("type");
+
                 //  Intent intent;
 
             }catch (Exception e)
@@ -221,19 +231,40 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
    /*    if(importantShift)
        {*/
 
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        if(type.equalsIgnoreCase("chat"))
+        {
+          intent = new Intent(this, MsgChatAct.class);
+            intent.putExtra("UserId",userid);
+            intent.putExtra("UserName",Title);
+            intent.putExtra("UserImage",userimage);
+            intent.putExtra("request_id",userid);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        /*    intent = new Intent(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);*/
+
+        }else
+        {
+            intent = new Intent(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        }
+
+       /* Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);*/
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 , intent,
                    PendingIntent.FLAG_ONE_SHOT);
 
            String channelId = "1";
            Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, channelId)
                    .setStyle(new NotificationCompat.BigTextStyle().bigText(Msg))
                    .setSmallIcon(R.mipmap.logo)
                    //.setLargeIcon(bitmap)
-                   .setContentTitle(Title)
+                   //.setContentTitle(Title)
+                   .setContentTitle(userid+","+Title)
                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                    .setContentText(Msg)
                    .setAutoCancel(true)

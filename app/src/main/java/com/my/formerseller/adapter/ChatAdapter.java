@@ -5,13 +5,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
-
-
+import com.bumptech.glide.Glide;
 import com.my.formerseller.R;
-import com.my.formerseller.model.HomeModel;
+import com.my.formerseller.model.ConverSationList;
+
 
 import java.util.ArrayList;
 
@@ -19,16 +19,16 @@ import java.util.ArrayList;
 public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private Context mContext;
-    private ArrayList<HomeModel> modelList;
+    private ArrayList<ConverSationList.Result> modelList;
     private OnItemClickListener mItemClickListener;
 
 
-    public ChatAdapter(Context context, ArrayList<HomeModel> modelList) {
+    public ChatAdapter(Context context, ArrayList<ConverSationList.Result> modelList) {
         this.mContext = context;
         this.modelList = modelList;
     }
 
-    public void updateList(ArrayList<HomeModel> modelList) {
+    public void updateList(ArrayList<ConverSationList.Result> modelList) {
         this.modelList = modelList;
         notifyDataSetChanged();
     }
@@ -43,11 +43,18 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         //Here you can fill your row view
         if (holder instanceof ViewHolder) {
-            final HomeModel model = getItem(position);
+            final ConverSationList.Result model = getItem(position);
             final ViewHolder genericViewHolder = (ViewHolder) holder;
            // genericViewHolder.txtName.setText(model.getName());
-        }
 
+            genericViewHolder.txtUserName.setText(""+model.getName());
+            genericViewHolder.txtlastMsg.setText(""+model.getLastMessage());
+
+            if(model.getImage()!=null)
+            {
+                Glide.with(mContext).load(""+model.getImage()).placeholder(R.drawable.john).into(genericViewHolder.imgSeller);
+            }
+        }
     }
 
 
@@ -61,26 +68,30 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         this.mItemClickListener = mItemClickListener;
     }
 
-    private HomeModel getItem(int position) {
+    private ConverSationList.Result getItem(int position) {
         return modelList.get(position);
     }
 
 
     public interface OnItemClickListener {
 
-        void onItemClick(View view, int position, HomeModel model);
+        void onItemClick(View view, int position, ConverSationList.Result model);
 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView txtName;
+        private ImageView imgSeller;
+        private TextView txtUserName;
+        private TextView txtlastMsg;
 
 
         public ViewHolder(final View itemView) {
             super(itemView);
 
-         //this.txtName=itemView.findViewById(R.id.txtName);
+         this.txtUserName=itemView.findViewById(R.id.txtUserName);
+         this.imgSeller=itemView.findViewById(R.id.imgSeller);
+         this.txtlastMsg=itemView.findViewById(R.id.txtlastMsg);
 
 
             itemView.setOnClickListener(new View.OnClickListener() {

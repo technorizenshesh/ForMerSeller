@@ -84,7 +84,6 @@ public class AddProduct extends AppCompatActivity {
 
         sessionManager = new SessionManager(AddProduct.this);
 
-
         setUi();
 
         if (sessionManager.isNetworkAvailable()) {
@@ -343,6 +342,7 @@ public class AddProduct extends AppCompatActivity {
 
 
     public void getCategory() {
+
         Call<Categorymodel> call = RetrofitClients
                 .getInstance()
                 .getApi()
@@ -362,7 +362,7 @@ public class AddProduct extends AppCompatActivity {
                     if (status.equalsIgnoreCase("1")){
 
                         modelist= (ArrayList<CategoryModelData>) myclass.getResult();
-                        CategorySpinnerAdapter customAdapter=new CategorySpinnerAdapter(AddProduct.this,flags,modelist);
+                        CategorySpinnerAdapter customAdapter=new CategorySpinnerAdapter(AddProduct.this,modelist);
                         binding.spinnerCatgory.setAdapter(customAdapter);
 
                     }else {

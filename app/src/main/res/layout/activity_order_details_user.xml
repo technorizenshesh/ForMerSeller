@@ -7,6 +7,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ProgressBar
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:id="@+id/progressBar"
+            android:background="@drawable/progresh_background"
+            android:elevation="6dp"
+            android:padding="5dp"
+            android:indeterminate="true"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="@color/purple_200"
+            android:visibility="gone"
+            />
+
         <RelativeLayout
             android:id="@+id/RRToolbar"
             android:layout_width="match_parent"
@@ -35,7 +49,7 @@
                 android:id="@+id/txtitem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Orders #121212"
+                android:text="Ordered Items"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_16sdp"
                 android:textStyle="bold">
@@ -44,6 +58,7 @@
 
 
             <TextView
+                android:id="@+id/txtUserName"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/_3sdp"
                 android:layout_below="@+id/txtitem"
@@ -66,6 +81,7 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
+                android:visibility="gone"
                 android:weightSum="2"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -126,7 +142,16 @@
             </TextView>
 
 
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerProductDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                android:visibility="visible" />
+
             <androidx.cardview.widget.CardView
+                android:visibility="gone"
                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5sdp"
@@ -293,6 +318,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5sdp"
@@ -455,46 +481,29 @@
 
             </androidx.cardview.widget.CardView>
 
-            <LinearLayout
+            <RelativeLayout
+                android:id="@+id/RRUserDetails"
+                android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:orientation="vertical"
-                android:padding="@dimen/_10sdp"
+                android:paddingLeft="10sp"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_120sdp"
+                android:layout_height="@dimen/_50sdp"
                 >
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    >
-                    <TextView
-                        android:textStyle="bold"
-                        android:textColor="@color/purple_200"
-                        android:textSize="@dimen/_16sdp"
-                        android:text="Home Address"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                    </TextView>
-
-
-                </RelativeLayout>
-
-
                 <TextView
-                    android:textColor="@color/black"
+                    android:layout_centerVertical="true"
+                    android:textStyle="bold"
+                    android:textColor="@color/purple_200"
                     android:textSize="@dimen/_16sdp"
-                    android:text="21,Alex Davidson Avenue,Opposite Omegatron Vicent smith Victoria island lagas nigera"
+                    android:text="@string/user_details"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
                 </TextView>
 
-            </LinearLayout>
 
+            </RelativeLayout>
 
         </LinearLayout>
-
 
     </RelativeLayout>
 

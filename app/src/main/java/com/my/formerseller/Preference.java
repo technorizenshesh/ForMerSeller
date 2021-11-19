@@ -12,13 +12,9 @@ public static final String APP_PREF = "KapsiePreferences";
 
 public static SharedPreferences sp;
 
-public static String KEY_user_id = "user_id";
-public static String KEYcategory_id = "caategory_id";
-public static String KEY_sub_Id = "KEY_sub_Id";
-public static String KEYLivestock = "Livestock";
-public static String KEYsuubcattitle = "sub";
-public static String KEY_seller_id = "seller_id";
-public static String KEYType_login = "KEYType_login";
+public static String KEYType_login = "user_id";
+public static String KEYType_Order_details_id = "Order_details_id";
+public static String KEY_product_details_id = "product_details_id";
 
 public static String key_switch_shift_change = "witch_shift_change";
 

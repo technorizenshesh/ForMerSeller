@@ -1,41 +1,71 @@
 {
   "project_info": {
-    "project_number": "834071605493",
-    "project_id": "formersellerapp",
-    "storage_bucket": "formersellerapp.appspot.com"
+    "project_number": "952831181539",
+    "firebase_url": "https://formerapp-99402-default-rtdb.firebaseio.com",
+    "project_id": "formerapp-99402",
+    "storage_bucket": "formerapp-99402.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:834071605493:android:48d84cc6111f95603fd5bc",
+        "mobilesdk_app_id": "1:952831181539:android:1632e7c7418503a087bbd6",
         "android_client_info": {
           "package_name": "com.my.formerseller"
         }
       },
       "oauth_client": [
         {
-          "client_id": "834071605493-ol9570vmjeaf9blg76akjhgc3ite2can.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.my.formerseller",
-            "certificate_hash": "07601957272bd2cdcf2c4b144175d46a1c7cc098"
-          }
-        },
-        {
-          "client_id": "834071605493-ed19bu5rsgl1g0m2e5k4tc1rnrnj1ocr.apps.googleusercontent.com",
+          "client_id": "952831181539-4jhv2vl7pj1knm3fr9nbinj04dfkoi3o.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDWzlvl6fIhpeV4A2VghmsBlGY0bSwMe3E"
+          "current_key": "AIzaSyDfkY0SaSsmyKaRArt4gwKTMHoewM7cQXQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "834071605493-ed19bu5rsgl1g0m2e5k4tc1rnrnj1ocr.apps.googleusercontent.com",
+              "client_id": "952831181539-4jhv2vl7pj1knm3fr9nbinj04dfkoi3o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:952831181539:android:3a43e00adb41031d87bbd6",
+        "android_client_info": {
+          "package_name": "com.my.fromerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "952831181539-hrq477f3p0h6qtka2tfi0eci61iovgre.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.my.fromerapp",
+            "certificate_hash": "07601957272bd2cdcf2c4b144175d46a1c7cc098"
+          }
+        },
+        {
+          "client_id": "952831181539-4jhv2vl7pj1knm3fr9nbinj04dfkoi3o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfkY0SaSsmyKaRArt4gwKTMHoewM7cQXQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "952831181539-4jhv2vl7pj1knm3fr9nbinj04dfkoi3o.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

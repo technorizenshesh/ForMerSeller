@@ -3,5 +3,10 @@
     <string name="accept"><u>Accept</u></string>
     <string name="decline"><u>Decline</u></string>
     <string name="checkInternet">Please Check Your Internet Connection</string>
+    <string name="details">Details</string>
+    <string name="user_details"><u>User Details</u></string>
+    <string name="cancel"><u>Cancel</u></string>
+    <string name="transit"><u>Transit</u></string>
     <string name="update_product">Update Product</string>
+    <string name="please_wait">please wait...</string>
 </resources>

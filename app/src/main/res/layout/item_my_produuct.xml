@@ -60,19 +60,40 @@
                     android:text="Read More"
                     android:textColor="@color/orange" />
 
+                <TextView
+                    android:layout_margin="@dimen/_5sdp"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="in Stock"
+                    android:textStyle="bold"
+                    android:textColor="@color/purple_200"
+                    android:textSize="@dimen/_12sdp"
+                    />
+
             </LinearLayout>
 
-            <TextView
-                android:layout_margin="@dimen/_5sdp"
+            <RelativeLayout
+                android:id="@+id/RRUpdateProduct"
                 android:layout_alignParentRight="true"
-                android:id="@+id/img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="in Stock"
-                android:textStyle="bold"
-                android:textColor="@color/purple_200"
-                android:textSize="@dimen/_12sdp"
-                />
+                android:visibility="visible"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                >
+
+                <ImageView
+                    android:src="@drawable/edit"
+                    android:layout_centerInParent="true"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    app:tint="@color/purple_200">
+
+                </ImageView>
+
+            </RelativeLayout>
+
+
 
 
         </RelativeLayout>

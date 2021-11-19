@@ -50,6 +50,7 @@ public class ProfileFragment extends Fragment {
 
         });
         binding.RRLogout.setOnClickListener(v -> {
+
             sessionManager.logoutUser();
             Preference.clearPreference(getActivity());
             startActivity(new Intent(getActivity(), Login.class));
@@ -101,7 +102,6 @@ public class ProfileFragment extends Fragment {
        String UsserId= Preference.get(getActivity(),Preference.KEYType_login);
 
         Log.e("User_id -----",""+UsserId);
-
 
         Call<LoginModel> call = RetrofitClients
                 .getInstance()

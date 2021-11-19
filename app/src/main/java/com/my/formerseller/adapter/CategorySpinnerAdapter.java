@@ -19,14 +19,13 @@ public class CategorySpinnerAdapter extends BaseAdapter {
     Context context;
     String[] countryNames;
     TextView countrycode;
-    int[] flags;
     ImageView icon;
     LayoutInflater inflter;
     private ArrayList<CategoryModelData> modelList;
 
-    public CategorySpinnerAdapter(Context applicationContext, int[] flags2, ArrayList<CategoryModelData> modelList2) {
+    public CategorySpinnerAdapter(Context applicationContext, ArrayList<CategoryModelData> modelList2) {
         this.context = applicationContext;
-        this.flags = flags2;
+
         this.modelList = modelList2;
         this.inflter = LayoutInflater.from(applicationContext);
     }

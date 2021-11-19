@@ -246,20 +246,21 @@
                     android:textSize="@dimen/_16sdp" />
 
 
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/imgAddProduct1"
+                    android:src="@drawable/add"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    >
+                </ImageView>
+
                 <RelativeLayout
                     android:id="@+id/RRAddProducutImage"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:background="@drawable/border_orange"
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="@dimen/_80sdp">
-
-                    <ImageView
-                        android:id="@+id/imgAddProduct1"
-                        android:src="@drawable/add"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        >
-                    </ImageView>
 
                     <ImageView
                         android:id="@+id/imgAddProduct"
